@@ -127,6 +127,7 @@
 #define X86_FEATURE_CX16		( 4*32+13) /* "cx16" CMPXCHG16B instruction */
 #define X86_FEATURE_XTPR		( 4*32+14) /* "xtpr" Send Task Priority Messages */
 #define X86_FEATURE_PDCM		( 4*32+15) /* "pdcm" Perf/Debug Capabilities MSR */
+#define X86_FEATURE_S2E			( 4*32+16) /* S2E support */
 #define X86_FEATURE_PCID		( 4*32+17) /* "pcid" Process Context Identifiers */
 #define X86_FEATURE_DCA			( 4*32+18) /* "dca" Direct Cache Access */
 #define X86_FEATURE_XMM4_1		( 4*32+19) /* "sse4_1" SSE-4.1 */

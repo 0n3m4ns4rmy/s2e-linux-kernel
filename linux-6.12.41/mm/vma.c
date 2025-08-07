@@ -7,6 +7,10 @@
 #include "vma_internal.h"
 #include "vma.h"
 
+#ifdef CONFIG_S2E
+#include <s2e/linux/linux_monitor.h>
+#endif
+
 static inline bool is_mergeable_vma(struct vma_merge_struct *vmg, bool merge_next)
 {
 	struct vm_area_struct *vma = merge_next ? vmg->next : vmg->prev;
@@ -357,6 +361,12 @@ void unmap_region(struct ma_state *mas, struct vm_area_struct *vma,
 		      next ? next->vm_start : USER_PGTABLES_CEILING,
 		      /* mm_wr_locked = */ true);
 	tlb_finish_mmu(&tlb);
+
+#ifdef CONFIG_S2E
+	if (s2e_linux_monitor_enabled) {
+		s2e_linux_unmap(current, start, end);
+	}
+#endif
 }
 
 /*
