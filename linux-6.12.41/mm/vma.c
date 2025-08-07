@@ -364,7 +364,7 @@ void unmap_region(struct ma_state *mas, struct vm_area_struct *vma,
 
 #ifdef CONFIG_S2E
 	if (s2e_linux_monitor_enabled) {
-		s2e_linux_unmap(current, start, end);
+		s2e_linux_unmap(current, vma->vm_start, vma->vm_end);
 	}
 #endif
 }
